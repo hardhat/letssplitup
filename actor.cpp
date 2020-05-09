@@ -226,8 +226,9 @@ void Actor::receiveAttack(int amount, AttackType type) {
 			noticeList.push_back(new Notice(sx,sy,"Dead"));
 		} else {
 			static int ugh=0;
-			std::string message=std::to_string(-amount);
-			noticeList.push_back(new Notice(sx,sy,message.c_str()));
+			char msg[256];
+			sprintf(msg,"%d",-amount);
+			noticeList.push_back(new Notice(sx,sy,msg));
 			if(enemy) {
 				sound.playOnce(SFX_ZAP);
 			} else {
