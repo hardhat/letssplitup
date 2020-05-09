@@ -13,7 +13,16 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="SDL/include/SDL2" />
 				</Compiler>
+				<Linker>
+					<Add library="SDL2" />
+					<Add library="SDL2_mixer" />
+					<Add library="SDL2_image" />
+					<Add library="SDL2_ttf" />
+					<Add library="SDL2main" />
+					<Add directory="SDL/lib" />
+				</Linker>
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/letssplitup" prefix_auto="1" extension_auto="1" />
@@ -37,7 +46,28 @@
 			<Add library="kernel32" />
 			<Add library="comctl32" />
 		</Linker>
+		<Unit filename="actor.cpp" />
+		<Unit filename="actor.h" />
+		<Unit filename="bullet.cpp" />
+		<Unit filename="bullet.h" />
+		<Unit filename="font.cpp" />
+		<Unit filename="font.h" />
+		<Unit filename="game.cpp" />
+		<Unit filename="game.h" />
+		<Unit filename="layer.cpp" />
+		<Unit filename="layer.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="main.h" />
+		<Unit filename="notice.cpp" />
+		<Unit filename="notice.h" />
+		<Unit filename="player.cpp" />
+		<Unit filename="player.h" />
+		<Unit filename="sound.cpp" />
+		<Unit filename="sound.h" />
+		<Unit filename="sprite.cpp" />
+		<Unit filename="sprite.h" />
+		<Unit filename="tile.cpp" />
+		<Unit filename="tile.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
