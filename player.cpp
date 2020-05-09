@@ -6,8 +6,8 @@
 
 Player::Player(Tile *tile) : Actor(tile)
 {
-	//printf("Player::Player()\n");
-	//resetGame();
+	printf("Player::Player()\n");
+	resetGame();
 	type=0;
 }
 
@@ -15,8 +15,8 @@ void Player::resetGame()
 {
 	Actor::resetGame();
     setType(0);
-    tx=10;
-    ty=12;
+    tx=2;
+    ty=2;
 }
 
 void Player::resetGame(int type,int x,int y)
@@ -35,7 +35,6 @@ void Player::update(int elapsed)
 void Player::draw()
 {
 	Actor::draw();
-
     int x=tx*tile->tileWidth;
     int y=ty*tile->tileHeight-5;
     static int color=0;

@@ -27,8 +27,8 @@ Sprite::Sprite(const char *name)
 {
 	x=0;
 	y=0;
-	w=0;
-	h=0;
+	w=128;
+	h=128;
 	imageId=-1;
 	if(nameMap.find(name)!=nameMap.end()) {
 		imageId=nameMap[name];

@@ -34,8 +34,8 @@ Actor::Actor(Tile *tile)
 
 void Actor::resetGame()
 {
-    avatarId=54;
-    avatarDeadId=53;
+    avatarId=0;
+    avatarDeadId=3;
     shieldId=4;
     tx=5;
     ty=1;
@@ -135,7 +135,7 @@ void Actor::draw()
 {
 	//printf("%s: %d HP, %d ATK, %d BLK\n",enemy?"Dragon":"Player",health,attackTimer,blockTimer);
 	//printf("blockRegenerateTime=%d, attackRegenerateTime=%d\n",blockRegenerateTime, attackRegenerateTime);
-
+    printf("tx = %d, ty = %d\n", tx, ty);
 	if(health>0) {
 		for(int j=0;j<avatarHeight;j++) {
             for(int i=0;i<avatarWidth;i++) {

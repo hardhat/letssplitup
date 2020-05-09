@@ -9,7 +9,7 @@
 enum GameMode {
     MODE_TITLE,
     MODE_CHOOSEAVATAR,
-    MODE_LEVEL,
+    MODE_LEVEL = 1,
     MODE_GAMEOVER,
 };
 
