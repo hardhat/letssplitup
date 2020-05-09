@@ -17,7 +17,7 @@ float renderScale=1;
 int screenleft=0;
 int screentop=0;
 int screenw,screenh;
-int maptop=120*16;
+int maptop=0;
 
 int main(int argc,char **argv)
 {
@@ -33,8 +33,8 @@ int main(int argc,char **argv)
 
 // create a new window
     SDL_Window* screen = NULL;
-    screenw=320;
-    screenh=240;
+    screenw=1280;
+    screenh=768;
     screen = SDL_CreateWindow("Logical Jump",
                           SDL_WINDOWPOS_CENTERED,
                           SDL_WINDOWPOS_CENTERED,
@@ -113,7 +113,7 @@ int main(int argc,char **argv)
 		message+=std::to_string(game.dragon.health);
         drawMessage(FONT_LABEL,message.c_str(),10,50);
 #else
-        //drawMessage(FONT_LABEL,"hud presently unavailable",10,50);
+        drawMessage(FONT_LABEL,"hud presently unavailable",10,50);
 #endif
 
  		SDL_RenderPresent(renderer);

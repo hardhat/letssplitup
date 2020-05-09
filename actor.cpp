@@ -165,6 +165,7 @@ void Actor::draw()
         static int color=0;
         Uint8 r=32, g=255, b=32;
         color=(color+1)%32;
+
         SDL_SetRenderDrawColor(renderer,255,32,32,255);
         SDL_Rect rect={(int)((x-8)*renderScale)+screenleft,(int)((y-8-maptop)*renderScale)+screentop,(int)(tile->tileWidth*6*renderScale),(int)(5*renderScale)};
         SDL_RenderFillRect(renderer,&rect);
