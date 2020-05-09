@@ -32,4 +32,5 @@
 *.app
 
 *.depend
+*.layout
 log.txt
