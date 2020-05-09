@@ -20,6 +20,7 @@
 					<Add library="SDL2_image" />
 					<Add library="SDL2_mixer" />
 					<Add library="SDL2_ttf" />
+					<Add directory="SDL/x86_64/lib" />
 					<Add directory="SDL/lib" />
 				</Linker>
 			</Target>
@@ -68,9 +69,6 @@
 		<Unit filename="tile.cpp" />
 		<Unit filename="tile.h" />
 		<Extensions>
-			<code_completion />
-			<envvars />
-			<debugger />
 			<lib_finder disable_auto="1" />
 		</Extensions>
 	</Project>
