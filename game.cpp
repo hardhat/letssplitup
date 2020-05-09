@@ -43,17 +43,18 @@ void Game::resetGame()
         characterLayer=new Layer(tile);
     }
 
-    bgLayer->load("data/level_background.csv");
-    fgLayer->load("data/level_foreground.csv");
-    characterLayer->load("data/level_characters.csv");
+    bgLayer->load("data/example_background.csv");
+    fgLayer->load("data/example_foreground.csv");
+    characterLayer->load("data/example_character.csv");
 
-    while(playerList.size()<6) {
+
+    while(playerList.size()<1) {
         Player *player=new Player(tile);
         player->resetGame();
         playerList.push_back(player);
     }
 
-    setMode(MODE_CHOOSEAVATAR);
+    setMode(MODE_LEVEL);
     totalTime=0;
 }
 
@@ -98,7 +99,7 @@ void Game::draw()
 
     for(ActorList::iterator p=enemyList.begin();p!=enemyList.end();p++) {
         Actor *enemy=*p;
-        enemy->draw();
+        //enemy->draw();
     }
     for(PlayerList::iterator p=playerList.begin();p!=playerList.end();p++) {
         Player *player=*p;
@@ -106,7 +107,7 @@ void Game::draw()
         if(player->isAlive()) count++;
     }
 
-    int w=0,h=0;
+    /*int w=0,h=0;
     char buf[256];
     sprintf(buf,"%d:%02d",totalTime/60000,(totalTime%60000)/1000);
     extentMessage(FONT_HEADLINE,buf,w,h);
@@ -131,7 +132,7 @@ void Game::draw()
             if(player->isAlive())
                 drawMessage(FONT_BODY,buf,32*i,maptop+220);
         }
-    }
+    }*/
 }
 
 void Game::handleAction(int which,int id,bool down)

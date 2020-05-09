@@ -72,7 +72,7 @@ void Tile::draw(int id,int col,int row)
 		SDL_SetRenderDrawColor(renderer,r,g,b,255);
 		SDL_RenderFillRect(renderer,&rect);
 		return;
-	}
+   	}
 
 	Texture *t=tileTextureMap[imageId];
 	int tilesAcross = t->w/tileWidth;
@@ -80,6 +80,6 @@ void Tile::draw(int id,int col,int row)
 	int ty=id/tilesAcross;
 	SDL_Rect srcRect={tx*tileWidth,ty*tileHeight,tileWidth,tileHeight};
 	SDL_Rect rect={(int)((x-tileWidth/2)*renderScale)+screenleft,(int)((y-tileHeight/2-maptop)*renderScale)+screentop,(int)(tileWidth*renderScale),(int)(tileHeight*renderScale)};
-    //if(rect.x>screenw || rect.y>screenh || rect.x-rect.w<0 || rect.y-rect.h<0) return;
+    if(rect.x>screenw || rect.y>screenh || rect.x-rect.w<0 || rect.y-rect.h<0) return;
 	SDL_RenderCopy(renderer, t->texture, &srcRect, &rect);
 }

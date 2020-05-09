@@ -57,8 +57,10 @@ void Layer::load(const char *filename)
             pos=0;
             sscanf(buf,"%d",&id);
             setTile(x,y,id);
+            printf("%d, ", id);
             x++;
             if(ch=='\n') {
+                printf("\n");
                 x=0;
                 y++;
             }
