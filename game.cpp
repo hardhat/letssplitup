@@ -137,7 +137,7 @@ void Game::draw()
 
 void Game::handleAction(int which,int id,bool down)
 {
-    if(playerList.size()>0 && id>=0 && (unsigned int)which<playerList.size()) {
+    if(playerList.size()>1 && id>=0 && (unsigned int)which<playerList.size()) {
         Player *player=playerList[which];
         player->handleAction(id,down);
     }
@@ -181,6 +181,7 @@ bool Game::canMoveTo(Player *player,int tx,int ty)
 {
     // check for map obstacles.
     int id=bgLayer->getTile(tx,ty);
+    if(id==-1) return true;
     switch(id) {
     default:
         return false;
