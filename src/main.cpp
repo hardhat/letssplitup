@@ -4,7 +4,7 @@
 #ifdef _PSP
 #include <oslib/oslib.h>
 #else
-#include <SDL/SDL.h>
+//#include <SDL/SDL.h>
 #ifdef __APPLE__
 #include <SDL_image/SDL_image.h>
 #include <SDL_mixer/SDL_mixer.h>
@@ -66,7 +66,7 @@ int main(int argc, char **argv)
 	if(!screen) exit(2);
 	SDL_WM_SetCaption( "Ninja Shopping Madness", NULL );
     srand(time(NULL));
-    
+
 	SDL_Joystick *joy=0;
     if(SDL_NumJoysticks()>0)
         joy=SDL_JoystickOpen(0);
@@ -81,7 +81,7 @@ int main(int argc, char **argv)
     	sfx[i]=Mix_LoadWAV(sfxpath[i]);
     }
 #endif
-	
+
 	//loads our images into memory
 	Hud hud;
 	Map map;
@@ -254,7 +254,7 @@ int main(int argc, char **argv)
 //        if(gameMode==MODE_GAME && resetTimer==0) {
 //    		black.ai(&map,&target);
 //        }
-    
+
     	game.update(map,hud);
 //    	if(gameMode==MODE_GAME && resetTimer==0) {
 //    		black.ai(&map,&target);
@@ -264,7 +264,7 @@ int main(int argc, char **argv)
 		game.draw(map,hud);
 //        test.draw(250, 250);
 	}
-	
+
 	printf("Exiting...\n");
 	//Terminate the program
 #ifdef _PSP
