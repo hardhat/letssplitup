@@ -139,7 +139,7 @@ void Actor::draw()
 	if(health>0) {
 		for(int j=0;j<avatarHeight;j++) {
             for(int i=0;i<avatarWidth;i++) {
-                tile->draw(avatarId+i+j*10,tx+i,ty+j);
+                tile->draw(avatarId+i+j,tx+i,ty+j);
             }
 		}
 	} else if(health==0) {
@@ -159,7 +159,7 @@ void Actor::draw()
 		n->draw();
 	}
 
-	if(avatarId==76 && health>0) {
+	if(avatarId==0 && health>0) {
         int x=(tx-2)*tile->tileWidth;
         int y=ty*tile->tileHeight-5;
         static int color=0;

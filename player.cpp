@@ -52,6 +52,7 @@ void Player::draw()
 void Player::handleAction(int id,bool down)
 {
     int x=tx,y=ty;
+    printf("x = %d, y = %d\n",x,y);
 
     Actor::handleAction(id,down);
 
