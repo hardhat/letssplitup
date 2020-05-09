@@ -107,7 +107,7 @@ void Game::draw()
         if(player->isAlive()) count++;
     }
 
-    /*int w=0,h=0;
+    int w=0,h=0;
     char buf[256];
     sprintf(buf,"%d:%02d",totalTime/60000,(totalTime%60000)/1000);
     extentMessage(FONT_HEADLINE,buf,w,h);
@@ -132,7 +132,7 @@ void Game::draw()
             if(player->isAlive())
                 drawMessage(FONT_BODY,buf,32*i,maptop+220);
         }
-    }*/
+    }
 }
 
 void Game::handleAction(int which,int id,bool down)

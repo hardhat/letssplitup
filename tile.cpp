@@ -63,6 +63,7 @@ void Tile::draw(int id,int col,int row)
 {
     int x=col*tileWidth;
     int y=row*tileHeight;
+    renderScale = 0.5;
     if(id<0) return;    // blank spot
    	if(tileTextureMap.find(imageId)==tileTextureMap.end()) {
 		SDL_Rect rect={(int)((x-8)*renderScale)+screenleft,(int)((y-8-maptop)*renderScale)+screentop,(int)(tileWidth*renderScale),(int)(tileHeight*renderScale)};
