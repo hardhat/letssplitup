@@ -7,14 +7,18 @@
 Player::Player(Tile *tile) : Actor(tile)
 {
 	printf("Player::Player()\n");
+	avatarId = 0;
+	tx = 1;
+	ty = 7;
 	resetGame();
-	type=0;
+	//type=0;
 }
 
 void Player::resetGame()
 {
 	//Actor::resetGame();
-    setType(0);
+    //setType(0);
+    avatarId = 0;
     tx=1;
     ty=7;
 }
@@ -31,6 +35,14 @@ void Player::update(int elapsed)
 {
 	Actor::update(elapsed);
 	int x=tx,y=ty;
+	animationDelay--;
+	while(animationDelay == 0){
+        avatarId += 1;
+        if(avatarId == 3){
+            avatarId = 1;
+        }
+        animationDelay = 10;
+	}
 
     if(speedx != 0 || speedy != 0) {
         x += speedx;
@@ -40,14 +52,12 @@ void Player::update(int elapsed)
             ty += speedy;
         }
     }
-
-
 }
 
 void Player::draw()
 {
     //printf("tx = %d, ty = %d\n",tx,ty);
-    tile->draw(0,tx,ty);
+    tile->draw(avatarId,tx,ty);
 	//Actor::draw();
 }
 

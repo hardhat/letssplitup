@@ -17,9 +17,11 @@ public:
 
 	virtual void setType(int type);
 	int getAvatarId(int type);
+	int avatarId;
 	int getAvatarDeadId(int type);
 	bool right, left, up, down;
 	int speedx = 0, speedy = 0;
+	int animationDelay = 10;
 };
 
 #endif
