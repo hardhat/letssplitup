@@ -19,7 +19,7 @@ public:
 	int getAvatarId(int type);
 	int getAvatarDeadId(int type);
 	bool right, left, up, down;
-	int speed = 0;
+	int speedx = 0, speedy = 0;
 };
 
 #endif

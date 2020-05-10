@@ -178,7 +178,7 @@ int main(int argc,char **argv)
                     game.handleAction(0,DPAD_UP,false);
                     break;
                 case SDLK_LEFT:
-                    game.handleAction(9,DPAD_LEFT,false);
+                    game.handleAction(0,DPAD_LEFT,false);
                     break;
                 case SDLK_RIGHT:
                     game.handleAction(0,DPAD_RIGHT,false);

@@ -30,10 +30,18 @@ void Player::resetGame(int type,int x,int y)
 void Player::update(int elapsed)
 {
 	Actor::update(elapsed);
-	if(right){
-        speed = 1;
-	}
-	//tx = x + speed;
+	int x=tx,y=ty;
+
+    if(speedx != 0 || speedy != 0) {
+        x += speedx;
+        y += speedy;
+        if(game.canMoveTo(this,x,y)) {
+            tx += speedx;
+            ty += speedy;
+        }
+    }
+
+
 }
 
 void Player::draw()
@@ -45,15 +53,14 @@ void Player::draw()
 
 void Player::handleAction(int id,bool down)
 {
-    int x=tx,y=ty;
-    printf("x = %d, y = %d", x, y);
+    //printf("x = %d, y = %d", x, y);
     //Actor::handleAction(id,down);
 
     if(health<=0) return;
-    if(id==DPAD_LEFT && down && tx>0) x--;
-    else if(id==DPAD_RIGHT && down && tx<19) x++;
-    else if(id==DPAD_UP && down && ty>0) y--;
-    else if(id==DPAD_DOWN && down && ty<119) y++;
+    else if(id==DPAD_LEFT && down && tx>0) speedx = -1, left = true;
+    else if(id==DPAD_RIGHT && down && tx<19) speedx = 1, right = true;
+    else if(id==DPAD_UP && down && ty>0) speedy = -1, up = true;
+    else if(id==DPAD_DOWN && down && ty<119) speedy = 1, down = true;
     else if(id==DPAD_A) {
         Actor *target=game.targetEnemy(this);
         if(target) attack(target,true);
@@ -63,36 +70,11 @@ void Player::handleAction(int id,bool down)
         //if(target) attack(target,true);
         block(AT_FORCE);
     }
-    //tx = x;
-    //ty = y;
+    else if(id==DPAD_LEFT && !down && tx>0) speedx = 0, left = false;
+    else if(id==DPAD_RIGHT && !down && tx<19) speedx = 0, right = false;
+    else if(id==DPAD_UP && !down && ty>0) speedy = 0, up = false;
+    else if(id==DPAD_DOWN && !down && ty<119) speedy = 0, down = false;
     //printf("newx = %d, newy = %d", x, y);
-    if(x!=tx || y!=ty) {
-        if(game.canMoveTo(this,x,y)) {
-            tx=x;
-            ty=y;
-            int id=game.collect(tx,ty);
-            if(id!=-1) {
-                float sx=0,sy=0;
-                sx=tx*tile->tileWidth;
-                sy=ty*tile->tileHeight;
-
-           		sound.playOnce(SFX_HAH);
-
-           		switch(id) {
-                case 21:    // goblet
-                    noticeList.push_back(new Notice(sx,sy,"Time -10"));
-                    game.totalTime-=10000;
-                    if(game.totalTime<0) game.totalTime=0;
-                    break;
-                case 45:    // fish
-                case 23:    // candle
-                    noticeList.push_back(new Notice(sx,sy,"+health"));
-                    health=fullHealth;
-                    break;
-           		}
-            }
-        }
-    }
 }
 
 void Player::setType(int newType)
