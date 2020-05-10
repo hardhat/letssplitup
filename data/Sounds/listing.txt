@@ -11,3 +11,5 @@
 "CARTOON-BING-LOW.wav" by kantouth of Freesound.org called bing-low.wav
 "Error Signal 2" by Breviceps of Freesound.org called big-fail.wav
 "error sound" by KorGround of Freesound.org called error-sound.wav
+"ceramic scratch" by Mafon2 of Freesound.org called up-pressure-plate.wav and down-pressure-plate.wav
+"Electro win sound" by Mativve of Freesound.org called win-sound.wav

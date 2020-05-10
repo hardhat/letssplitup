@@ -15,26 +15,35 @@ Sound sound;
 SoundMap soundMap;
 
 const char *sfxPath[]={
-	"data/none.wav",
-    "data/quest.wav",
-	"data/welcome.wav",
+	"data/Sounds/none.wav",
 
-	"data/ugh1.wav",
-	"data/ugh2.wav",
-	"data/ugh3.wav",
+    "data/Sounds/door-open.wav",
+    "data/Sounds/door-opening-a.wav",
+    "data/Sounds/door-closing-a.wav",
 
-	"data/hah.wav",
+    "data/Sounds/sliding-door-open.wav",
+    "data/Sounds/sliding-door-close.wav",
 
-	"data/firebreath.wav",
-	"data/zap.wav",
-	"data/missed.wav",
+    "data/Sounds/voice-open-the-door.wav",
 
-	"data/flames.wav",
+    "data/Sounds/switch-click.wav",
+    "data/Sounds/up-pressure-plate.wav",
+    "data/Sounds/down-pressure-plate.wav",
 
-	"data/die.wav",
+    "data/Sounds/wall-explode.wav",
+    "data/Sounds/big-explosion.wav",
 
-	"data/win.wav",
-	"data/lose.wav",
+    "data/Sounds/quiet-fail.wav",
+    "data/Sounds/bing-low.wav",
+    "data/Sounds/big-fail.wav",
+
+    "data/Sounds/sad-trombone.wav",
+
+
+   "data/Sounds/error-sound.wav",
+
+   "data/Sounds/win-sound.wav",
+
 };
 
 Sound::Sound()
@@ -54,7 +63,7 @@ void Sound::loadAll()
 		Mix_PlayMusic(song,-1);
 	}
 	// need to load the sound effects here.
-	for(int i=0;i<SFX_MAX;i++) {
+	for(int i=0;i<SFX_HIGH_ERROR;i++) {
 		FILE *file=fopen(sfxPath[i],"r");
 		if(file) {
 			fclose(file);

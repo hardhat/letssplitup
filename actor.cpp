@@ -81,12 +81,12 @@ void Actor::update(int elapsed)
         enemyAttack();
         if(!spoke && bulletList.size()>0) {
             spoke=true;
-            if(avatarId==76) sound.playOnce(SFX_WELCOME);
+            if(avatarId==76) sound.playOnce(SFX_HIGH_ERROR);
         }
 	}
 	if(avatarId==4 && !spoke && maptop<100*tile->tileHeight) {
         spoke=true;
-        sound.playOnce(SFX_QUEST);
+        sound.playOnce(SFX_HIGH_ERROR);
 	}
 
 	bool deadBullet=false;
@@ -224,7 +224,7 @@ void Actor::receiveAttack(int amount, AttackType type) {
 		if(health<0) health=0;
 		//printf("%s: Received attack of %d and type %d.  %d HP remaining.\n",enemy?"Dragon":"Player",amount,(int)type,health);
 		if(health==0) {
-			if(!enemy) sound.playOnce(SFX_DIE);
+			if(!enemy) sound.playOnce(SFX_GAME_OVER);
 			noticeList.push_back(new Notice(sx,sy,"Dead"));
 		} else {
 			static int ugh=0;
@@ -232,15 +232,15 @@ void Actor::receiveAttack(int amount, AttackType type) {
 			sprintf(msg,"%d",-amount);
 			noticeList.push_back(new Notice(sx,sy,msg));
 			if(enemy) {
-				sound.playOnce(SFX_ZAP);
+				sound.playOnce(SFX_LOW_ERROR);
 			} else {
-				sound.playOnce(ugh!=0?ugh==2?SFX_UGH1:SFX_UGH2:SFX_UGH3);
+				sound.playOnce(ugh!=0?ugh==2?SFX_QUIET_WARNING:SFX_LOW_ERROR:SFX_HIGH_ERROR);
 				ugh=(ugh+1)%3;
 			}
 		}
 	} else {
 		//printf("%s: Blocked attack.\n",enemy?"Dragon":"Player");
-		sound.playOnce(SFX_HAH);
+		sound.playOnce(SFX_QUIET_WARNING);
 		noticeList.push_back(new Notice(sx,sy,"Blocked"));
 	}
 }
