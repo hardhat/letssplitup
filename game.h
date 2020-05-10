@@ -14,14 +14,14 @@ enum GameMode {
 };
 
 enum DPadKey {
-    DPAD_LEFT,
-    DPAD_UP,
-    DPAD_RIGHT,
-    DPAD_DOWN,
-    DPAD_A,
-    DPAD_B,
-    DPAD_SELECT=10,
-    DPAD_START,
+    DPAD_LEFT = 0,
+    DPAD_UP = 1,
+    DPAD_RIGHT = 2,
+    DPAD_DOWN = 3,
+    DPAD_A = 4,
+    DPAD_B = 5,
+    DPAD_SELECT=6,
+    DPAD_START = 7,
 };
 
 class Player;

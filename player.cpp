@@ -13,10 +13,10 @@ Player::Player(Tile *tile) : Actor(tile)
 
 void Player::resetGame()
 {
-	Actor::resetGame();
+	//Actor::resetGame();
     setType(0);
-    tx=2;
-    ty=2;
+    tx=1;
+    ty=7;
 }
 
 void Player::resetGame(int type,int x,int y)
@@ -30,31 +30,24 @@ void Player::resetGame(int type,int x,int y)
 void Player::update(int elapsed)
 {
 	Actor::update(elapsed);
+	if(right){
+        speed = 1;
+	}
+	//tx = x + speed;
 }
 
 void Player::draw()
 {
-	Actor::draw();
-    int x=tx*tile->tileWidth;
-    int y=ty*tile->tileHeight-5;
-    static int color=0;
-    Uint8 r=32, g=255, b=32;
-    color=(color+1)%32;
-    SDL_SetRenderDrawColor(renderer,255,32,32,255);
-    SDL_Rect rect={(int)((x-8)*renderScale)+screenleft,(int)((y-8-maptop)*renderScale)+screentop,(int)(tile->tileWidth*renderScale),(int)(5*renderScale)};
-    SDL_RenderFillRect(renderer,&rect);
-    SDL_SetRenderDrawColor(renderer,r,g,b,255);
-    float percent=health/(float)fullHealth;
-    SDL_Rect rect2={(int)((x-8)*renderScale)+screenleft,(int)((y-8-maptop)*renderScale)+screentop,(int)(percent*tile->tileWidth*renderScale),(int)(5*renderScale)};
-    SDL_RenderFillRect(renderer,&rect2);
+    //printf("tx = %d, ty = %d\n",tx,ty);
+    tile->draw(0,tx,ty);
+	//Actor::draw();
 }
 
 void Player::handleAction(int id,bool down)
 {
     int x=tx,y=ty;
-    printf("x = %d, y = %d\n",x,y);
-
-    Actor::handleAction(id,down);
+    printf("x = %d, y = %d", x, y);
+    //Actor::handleAction(id,down);
 
     if(health<=0) return;
     if(id==DPAD_LEFT && down && tx>0) x--;
@@ -70,7 +63,9 @@ void Player::handleAction(int id,bool down)
         //if(target) attack(target,true);
         block(AT_FORCE);
     }
-
+    //tx = x;
+    //ty = y;
+    //printf("newx = %d, newy = %d", x, y);
     if(x!=tx || y!=ty) {
         if(game.canMoveTo(this,x,y)) {
             tx=x;

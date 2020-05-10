@@ -137,10 +137,11 @@ void Game::draw()
 
 void Game::handleAction(int which,int id,bool down)
 {
-    if(playerList.size()>1 && id>=0 && (unsigned int)which<playerList.size()) {
+    if(playerList.size()>=1 && id>=0 && (unsigned int)which<playerList.size()) {
         Player *player=playerList[which];
         player->handleAction(id,down);
     }
+    printf("id = %d  \n", id);
 }
 
 void Game::setMode(int newMode)

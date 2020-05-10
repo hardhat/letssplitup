@@ -7,7 +7,7 @@
 
 Actor::Actor(Tile *tile)
 {
-	//printf("Actor::Actor()\n");
+	printf("Actor::Actor()\n");
     this->tile=tile;
 
 	attackType=AT_FORCE;
@@ -22,13 +22,13 @@ Actor::Actor(Tile *tile)
 	blockRegenerateTime=1000;
 	enemy=false;
 
-    avatarId=3;
+    avatarId=0;
     avatarDeadId=2;
     shieldId=1;
-    tx=1;
-    ty=1;
-    avatarWidth=1;
-    avatarHeight=1;
+    tx=0;
+    ty=0;
+    avatarWidth=0;
+    avatarHeight=0;
     spoke=false;
 }
 
@@ -37,10 +37,10 @@ void Actor::resetGame()
     avatarId=0;
     avatarDeadId=3;
     shieldId=4;
-    tx=5;
-    ty=1;
-    avatarWidth=1;
-    avatarHeight=1;
+    tx=0;
+    ty=0;
+    avatarWidth=0;
+    avatarHeight=0;
 
 	blockTimer=0;
 	attackTimer=0;
@@ -84,7 +84,7 @@ void Actor::update(int elapsed)
             if(avatarId==76) sound.playOnce(SFX_WELCOME);
         }
 	}
-	if(avatarId==56 && !spoke && maptop<100*tile->tileHeight) {
+	if(avatarId==4 && !spoke && maptop<100*tile->tileHeight) {
         spoke=true;
         sound.playOnce(SFX_QUEST);
 	}
@@ -133,17 +133,18 @@ void Actor::update(int elapsed)
 
 void Actor::draw()
 {
+    //tile->draw(avatarId,tx,ty);
 	//printf("%s: %d HP, %d ATK, %d BLK\n",enemy?"Dragon":"Player",health,attackTimer,blockTimer);
 	//printf("blockRegenerateTime=%d, attackRegenerateTime=%d\n",blockRegenerateTime, attackRegenerateTime);
     printf("tx = %d, ty = %d\n", tx, ty);
 	if(health>0) {
 		for(int j=0;j<avatarHeight;j++) {
             for(int i=0;i<avatarWidth;i++) {
-                tile->draw(avatarId+i+j,tx+i,ty+j);
+                //tile->draw(avatarId+i+j,tx+i,ty+j);
             }
 		}
 	} else if(health==0) {
-		tile->draw(avatarDeadId,tx,ty);
+		//tile->draw(avatarDeadId,tx,ty);
 	}
 
     if(blockTimer>0) {
