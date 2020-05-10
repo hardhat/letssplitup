@@ -8,6 +8,10 @@ class Gate: public Wire
     public:
         Gate();
         virtual ~Gate();
+        void and(Wire x, Wire y){if (x.isOn() && y.isOn() == true){powered = true;}}
+        void or(Wire x; Wire y){if (x.isOn() || y.isOn() == true){powered = true;}}
+        void nand(Wire x; Wire y){if (x.isOn() && y.isOn() != true){powered = true;}}
+        void nor(Wire x; Wire y){if (x.isOn() || y.isOn() != true){powered = true;}}
 
     protected:
 
