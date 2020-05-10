@@ -14,8 +14,8 @@
 extern Game game;
 SDL_Renderer *renderer;
 float renderScale=1;
-int screenleft=0;
-int screentop=0;
+int screenleft=32;
+int screentop=32;
 int screenw,screenh;
 int maptop=0;
 
@@ -33,8 +33,8 @@ int main(int argc,char **argv)
 
 // create a new window
     SDL_Window* screen = NULL;
-    screenw=1280;
-    screenh=768;
+    screenw=800;
+    screenh=600;
     screen = SDL_CreateWindow("Logical Jump",
                           SDL_WINDOWPOS_CENTERED,
                           SDL_WINDOWPOS_CENTERED,

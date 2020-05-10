@@ -107,7 +107,7 @@ void Game::draw()
         if(player->isAlive()) count++;
     }
 
-    /*int w=0,h=0;
+    int w=0,h=0;
     char buf[256];
     sprintf(buf,"%d:%02d",totalTime/60000,(totalTime%60000)/1000);
     extentMessage(FONT_HEADLINE,buf,w,h);
@@ -132,12 +132,12 @@ void Game::draw()
             if(player->isAlive())
                 drawMessage(FONT_BODY,buf,32*i,maptop+220);
         }
-    }*/
+    }
 }
 
 void Game::handleAction(int which,int id,bool down)
 {
-    if(playerList.size()>0 && id>=0 && (unsigned int)which<playerList.size()) {
+    if(playerList.size()>1 && id>=0 && (unsigned int)which<playerList.size()) {
         Player *player=playerList[which];
         player->handleAction(id,down);
     }
@@ -181,6 +181,7 @@ bool Game::canMoveTo(Player *player,int tx,int ty)
 {
     // check for map obstacles.
     int id=bgLayer->getTile(tx,ty);
+    if(id==-1) return true;
     switch(id) {
     default:
         return false;
