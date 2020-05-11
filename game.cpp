@@ -38,18 +38,57 @@ void Game::resetGame()
 
     if(!tile) {
         tile=new Tile("spritesheet.png",128,128);
-        bgLayer=new Layer(tile);
+        tile1 = new Tile("resizedtileset.png",128,128);
+        tile2 = new Tile("FoxGirlSheet.png",128,128);
+        tile3 = new Tile("humansheet.png",128,128);
+        bgLayer=new Layer(tile1);
         fgLayer=new Layer(tile);
-        characterLayer=new Layer(tile);
+        characterLayer=new Layer(tile2);
     }
 
-    bgLayer->load("data/example_background.csv");
-    fgLayer->load("data/example_foreground.csv");
-    characterLayer->load("data/example_character.csv");
+    bgLayer->load("data/map/Tutorial Level 1_Background.csv");
+    fgLayer->load("data/map/Tutorial Level 1_Foreground.csv");
+    characterLayer->load("data/map/Tutorial Level 1_Character.csv");
 
-
-    while(playerList.size()<1) {
-        Player *player=new Player(tile);
+    /*for(int i = 0; i < 100 ;i++){
+        for(int j = 0; i < 100 ;j++){
+            int id = characterLayer->getTile(i,j);
+            if(id == 0){
+                x = i;
+                y = j;
+            }
+        }
+    }*/
+    /*for (int j=0;j<tile2->getHeight();j++) {
+        for (int i=0;i<tile2->getWidth();i++) {
+            if( characterLayer->getTile(i,j) !=-1) break;
+        }
+    }*/
+    int n=3;
+    for (int j=0;j<tile2->getHeight();j++) {
+        for (int i=0;i<tile2->getWidth();i++) {
+            if( characterLayer->getTile(i,j) !=-1) {
+                n--;
+                if(n==0) break;
+            }
+        }
+    }
+    while(playerList.size()<4) {
+            Player *player;
+        for(int i = 0; i < 4; i++){
+            if(i == 0){
+                player=new Player(tile2,x,y);
+            }
+            if(i == 1){
+                player=new Player(tile3,x,y);
+            }
+            if(i == 2){
+                //player=new Player(tile2,x,y);
+            }
+            if(i == 3){
+                //player=new Player(tile2,x,y);
+            }
+        }
         player->resetGame();
         playerList.push_back(player);
     }
@@ -96,6 +135,7 @@ void Game::draw()
 
     bgLayer->draw();
     fgLayer->draw();
+    characterLayer->draw();
 
     for(ActorList::iterator p=enemyList.begin();p!=enemyList.end();p++) {
         Actor *enemy=*p;
@@ -183,6 +223,7 @@ bool Game::canMoveTo(Player *player,int tx,int ty)
     // check for map obstacles.
     int id=bgLayer->getTile(tx,ty);
     if(id==-1) return true;
+    //if(id != -1) return false;
     switch(id) {
     default:
         return false;

@@ -9,6 +9,8 @@ public:
 	Tile(const char *filename,int tileWidth,int tileHeight);
 	~Tile();
 	void draw(int id,int col,int row);
+	int getHeight();
+	int getWidth();
 };
 
 #endif

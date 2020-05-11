@@ -13,7 +13,7 @@
 
 extern Game game;
 SDL_Renderer *renderer;
-float renderScale=1;
+float renderScale=0.3;
 int screenleft=32;
 int screentop=32;
 int screenw,screenh;

@@ -22,7 +22,7 @@ Actor::Actor(Tile *tile)
 	blockRegenerateTime=1000;
 	enemy=false;
 
-    avatarId=0;
+    //avatarId=0;
     avatarDeadId=2;
     shieldId=1;
     tx=0;
@@ -34,7 +34,7 @@ Actor::Actor(Tile *tile)
 
 void Actor::resetGame()
 {
-    avatarId=0;
+    //avatarId=0;
     avatarDeadId=3;
     shieldId=4;
     tx=0;

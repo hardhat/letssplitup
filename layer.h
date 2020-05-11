@@ -13,6 +13,8 @@ public:
 
 	int getTile(int tx,int ty);
 	void setTile(int tx,int ty,int value);
+	int getX();
+	int gteY();
 
 private:
 	int *tileMap;

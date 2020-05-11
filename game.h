@@ -35,12 +35,18 @@ class Game {
 public:
     int mode;
     Tile *tile;
+    Tile *tile1;
+    Tile *tile2;
+    Tile *tile3;
+    Tile *tile4;
+    Tile *tile5;
     Layer *bgLayer;
     Layer *fgLayer;
     Layer *characterLayer;
     PlayerList playerList;
     ActorList enemyList;
     int totalTime;
+    int x, y;
 
     Game();
     ~Game();

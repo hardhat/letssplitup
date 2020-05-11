@@ -89,3 +89,10 @@ void Layer::setTile(int x,int y,int value) {
     if(x<0 || y<0 || x>=tw || y>=th) return;
     tileMap[x+y*tw]=value;
 }
+int Layer::getX(){
+    //return x;
+}
+
+int Layer::gteY(){
+    //return y;
+}
